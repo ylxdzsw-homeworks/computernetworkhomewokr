@@ -17,6 +17,7 @@ socket.on 'message', (msg, rinfo) ->
 	else
 		console.log "#{other.length} bytes from #{rinfo.address}:#{rinfo.port}, Dropped     id:#{id}, content:#{other}"
 	
+	return console.log "not sendding ACK, id:#{seg.get()}" if Math.random() < 0.5
 	ACK = new Buffer(1)
 	ACK.writeInt8 seg.get()
 	socket.send ACK, 0, ACK.length, rinfo.port, rinfo.address

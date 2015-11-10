@@ -24,7 +24,7 @@ startTick = do ->
 		clearTimeout handle if handle
 		for i in [0...lastACK.minus lastACK.getbase()]
 			packets.shift()
-		return if packets.length is 0
+		return console.log "finished!" if packets.length is 0
 		resnum = 0
 		lastACK.rebase lastACK.get()
 		seg.set lastACK.get()
